@@ -71,7 +71,7 @@ class MenuTests(unittest.TestCase):
         with patch('pyfiglet.Figlet') as figlet:
             figlet.return_value.renderText.return_value='BANNER\n'
             Console(output_fn=output.append,color=True).banner()
-            figlet.assert_called_once_with(font='block', width=200)
+            figlet.assert_called_once_with(font='slant', width=200)
             figlet.return_value.renderText.assert_called_once_with('AUTO-LITURAL')
         self.assertIn('\033[95mBANNER\033[0m',output)
 

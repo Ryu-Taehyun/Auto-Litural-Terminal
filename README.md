@@ -1,6 +1,6 @@
 # AUTO-LITURAL Terminal Edition
 
-기존 Auto-Litural에서 분리한 Windows용 터미널 버전입니다. 웹 서버 없이 메뉴에서 아침/마무리 리추얼을 선택하고 Chrome 입력을 실행합니다. 기존 웹 버전과 분리된 `Auto-Litural-Terminal` 폴더로 제공합니다. 배너는 pyfiglet의 block 글꼴과 보라색을 사용합니다.
+기존 Auto-Litural에서 분리한 Windows용 터미널 버전입니다. 웹 서버 없이 메뉴에서 아침/마무리 리추얼을 선택하고 Chrome 입력을 실행합니다. 기존 웹 버전과 분리된 `Auto-Litural-Terminal` 폴더로 제공합니다. 배너는 pyfiglet의 slant 글꼴과 보라색을 사용합니다.
 
 ## 실행
 

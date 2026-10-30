@@ -37,7 +37,7 @@ class Console:
 
     def banner(self):
         from pyfiglet import Figlet
-        self.write(Figlet(font='block', width=200).renderText('AUTO-LITURAL').rstrip(), 'purple')
+        self.write(Figlet(font='slant', width=200).renderText('AUTO-LITURAL').rstrip(), 'purple')
 
 
 class Menu:
