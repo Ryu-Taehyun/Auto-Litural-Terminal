@@ -1,6 +1,7 @@
 """Ritual field filling used by the terminal launcher. Never clicks final save."""
 from pathlib import Path
 import random
+import re
 import pandas as pd
 from playwright.async_api import expect
 
@@ -53,11 +54,7 @@ async def radio_check(page, names):
 
 async def write_1(page, names):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-    has_text="편안했던 장면 하나 떠올리기").wait_for(state="visible",timeout=30000)
-=======
-    has_text="기분 좋아지는 생각 찾기").wait_for(state="visible",timeout=30000)
->>>>>>> c490637 (Change Text Parser)
+    has_text=re.compile('편안했던\\ 장면\\ 하나\\ 떠올리기|기분\\ 좋아지는\\ 생각\\ 찾기')).wait_for(state="visible",timeout=30000)
     name = pd.read_csv(DATA / 'Title.csv', encoding="utf-8", header=None)
     print("[INFO] Write_1")
     await page.locator("#memoryMode-scene").check()
@@ -68,11 +65,7 @@ async def write_1(page, names):
 
 async def write_2(page, names):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-    has_text="내 인생의 기억에서 강점(장점)과 가치 찾기").wait_for(state="visible",timeout=30000)
-=======
-    has_text="지난 기억에서 내가 좋아하는 나의 장점 찾기").wait_for(state="visible",timeout=30000)
->>>>>>> c490637 (Change Text Parser)
+    has_text=re.compile('내\\ 인생의\\ 기억에서\\ 강점\\(장점\\)과\\ 가치\\ 찾기|지난\\ 기억에서\\ 내가\\ 좋아하는\\ 나의\\ 장점\\ 찾기')).wait_for(state="visible",timeout=30000)
     csv1 = pd.read_csv(DATA / '1.csv', encoding="utf-8", header=None)
     csv2 = pd.read_csv(DATA / '2.csv', encoding="utf-8", header=None)
     csv3 = pd.read_csv(DATA / '3.csv', encoding="utf-8", header=None)
@@ -86,11 +79,7 @@ async def write_2(page, names):
 
 async def write_3(page, names):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-        has_text="남에 대한 평가는 나에 대한 평가"
-=======
-        has_text="동료의 장점을 칭찬하기"
->>>>>>> c490637 (Change Text Parser)
+        has_text=re.compile('남에\\ 대한\\ 평가는\\ 나에\\ 대한\\ 평가|동료의\\ 장점을\\ 칭찬하기')
     ).wait_for(state="visible", timeout=30000)
 
     csv4 = pd.read_csv(DATA / '4.csv', encoding="utf-8", header=None)

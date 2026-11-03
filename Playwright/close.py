@@ -1,6 +1,7 @@
 """Ritual field filling used by the terminal launcher. Never clicks final save."""
 from pathlib import Path
 import random
+import re
 import pandas as pd
 from playwright.async_api import expect
 
@@ -43,11 +44,7 @@ async def find_button(page, peers):
 
 async def write_1(page, peers):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-        has_text="아침에 정한 강점 행동을 돌아봅니다").wait_for(state="visible", timeout=30000)
-=======
-        has_text="아침에 정한 행동을 돌아봅니다").wait_for(state="visible", timeout=30000)
->>>>>>> c490637 (Change Text Parser)
+        has_text=re.compile('아침에\\ 정한\\ 강점\\ 행동을\\ 돌아봅니다|아침에\\ 정한\\ 행동을\\ 돌아봅니다')).wait_for(state="visible", timeout=30000)
     print("[INFO] Write_1")
     await page.locator("#closeStatus-done").check()
     await page.locator("#strengthEffort").fill(pick(DATA / 'close_effort.csv')[0])
@@ -58,11 +55,7 @@ async def write_1(page, peers):
 
 async def write_2(page, peers):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-        has_text="오늘 감사했던 일을 동료들과 나눕니다").wait_for(state="visible", timeout=30000)
-=======
-        has_text="감사한 일을 동료들과 나눕니다").wait_for(state="visible", timeout=30000)
->>>>>>> c490637 (Change Text Parser)
+        has_text=re.compile('오늘\\ 감사했던\\ 일을\\ 동료들과\\ 나눕니다|감사한\\ 일을\\ 동료들과\\ 나눕니다')).wait_for(state="visible", timeout=30000)
     print("[INFO] Write_2")
     print("입력 대상:", peers)
     await page.locator("#myShare").fill(pick(DATA / 'close_share.csv')[0])
@@ -86,11 +79,7 @@ async def write_2(page, peers):
 
 async def write_final(page, peers):
     await page.locator("#stepTitle").filter(
-<<<<<<< HEAD
-        has_text="오늘의 감사일기").wait_for(state="visible", timeout=30000)
-=======
-        has_text="나의; 감사일기").wait_for(state="visible", timeout=30000)
->>>>>>> c490637 (Change Text Parser)
+        has_text=re.compile('오늘의\\ 감사일기|나의;\\ 감사일기')).wait_for(state="visible", timeout=30000)
     print("[INFO] Write_FINAL")
 
     rows = page.locator('[id^="gratitude-event-"]')
